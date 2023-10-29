@@ -9,13 +9,13 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import BackButton from '../assets/arrow-left-black.png';
 import Eye from '../assets/eye.png';
 import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { register } from '../database/auth';
 import { getDbConnection } from '../database/database';
 import { getUserById } from '../database/user';
+import Header from '../components/Header';
 
 const widthScreen = Dimensions.get('window').width;
 
@@ -64,13 +64,13 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {/* header */}
-      <View style={styles.headerContainer}>
-        <Pressable onPress={() => navigation.goBack()}>
-          <Image source={BackButton} style={styles.backButton} />
-        </Pressable>
-        <Text style={styles.headerTitle}>Sign Up</Text>
-        <Text style={{ color: '#FCFCFC' }}>76876876</Text>
-      </View>
+      <Header
+        color='#FCFCFC'
+        navigation={navigation}
+        title='Sign Up'
+        colorTitle='#000'
+        backButton='black'
+      />
 
       {/* form */}
       <View style={styles.formContainer}>
@@ -174,24 +174,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FCFCFC',
     flex: 1,
   },
-
-  // header
-  headerContainer: {
-    marginTop: 40,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  backButton: {
-    width: 50,
-    height: 30,
-  },
-  headerTitle: {
-    fontFamily: 'Inter-SemiBold',
-    color: '#000',
-    fontSize: 18,
-  },
-
   // form
   formContainer: {
     marginTop: 120,

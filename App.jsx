@@ -9,6 +9,7 @@ import LoginPinScreen from './screens/LoginPinScreen';
 import OnboardingAccountScreen from './screens/OnboardingAccountScreen';
 import HomeScreen from './screens/HomeScreen';
 import CreateAccountScreen from './screens/CreateAccountScreen';
+import AccountCreatedScreen from './screens/AccountCreatedScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +69,12 @@ function App() {
           options={{ headerShown: false }}
           name="CreateAccountScreen"
           component={CreateAccountScreen}
+        />
+
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="AccountCreatedScreen"
+          component={AccountCreatedScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
