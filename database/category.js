@@ -2,12 +2,12 @@
 export const createCategoryTable = async (db) => {
   try {
     return db.executeSql(`
-      CREATE TABLE IF NOT EXISTS category(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+      CREATE TABLE IF NOT EXISTS Categories(
+        category_id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT NOT NULL,
         icon TEXT,
-        createdAt TEXT,
-        updatedAt TEXT,
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
       );
     `);
   } catch(err) {

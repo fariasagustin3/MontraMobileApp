@@ -1,15 +1,17 @@
 // create budget table
 export const createBudgetTable = async (db) => {
   try {
-    return db.executeSql(`
-      CREATE TABLE IF NOT EXISTS budget(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        limit REAL NOT NULL,
-        FOREIGN KEY (category_id) REFERENCES category(id),
-        createdAt TEXT,
-        updatedAt TEXT,
-      );
-    `);
+    return db.transaction((tx) => {
+      tx.executeSql(`
+        CREATE TABLE IF NOT EXISTS Budgets(
+          budget_id INTEGER PRIMARY KEY AUTOINCREMENT,
+          limits REAL NOT NULL,
+          category_id INTEGER REFERENCES Categories(category_id),
+          createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+          updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+        );
+      `)
+    });
   } catch(err) {
     console.log(err);
   }
